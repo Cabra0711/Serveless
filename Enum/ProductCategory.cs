@@ -1,6 +1,11 @@
 namespace PedidosBackend.Enum;
 
-public enum ProductStatus
+public enum ProductCategory
 {
-    
+    Home,
+    Kitchen,
+    Electronics,
+    Clothing,
+    Sports,
+    Other
 }

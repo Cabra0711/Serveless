@@ -1,6 +1,6 @@
 namespace PedidosBackend.Models;
 
-public class Delivery
+public class Delivery : BaseEntity
 {
     
 }
