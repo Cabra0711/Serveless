@@ -16,6 +16,7 @@ public class ProductController : ControllerBase
     }
     
     // GET api/values
+    [Route("GetProducts")]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Product>>> GetAll()
     {
@@ -24,6 +25,7 @@ public class ProductController : ControllerBase
     }
 
     // GET api/values/5
+    [Route("GetProductsById")]
     [HttpGet("{id}")]
     public async Task<ActionResult<Product>> GetById(Guid id)
     {
@@ -40,6 +42,7 @@ public class ProductController : ControllerBase
     }
 
     // POST api/values
+    [Route("CreateProduct")]
     [HttpPost]
     public async Task<ActionResult<Product>> Post([FromBody] Product product)
     {
@@ -63,6 +66,7 @@ public class ProductController : ControllerBase
     }
 
     // PUT api/values/5
+    [Route("EditProduct")]
     [HttpPut("{id}")]
     public async Task<ActionResult<Product>> Put(Guid id, [FromBody] Product product)
     {
@@ -76,6 +80,7 @@ public class ProductController : ControllerBase
     }
 
     // DELETE api/values/5
+    [Route("DeleteProduct")]
     [HttpDelete("{id}")]
     public async Task<ActionResult<Product>> Delete(Guid id)
     {
