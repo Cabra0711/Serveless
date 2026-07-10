@@ -3,7 +3,6 @@ using Amazon.DynamoDBv2.DataModel;
 using PedidosBackend.Enum;
 
 namespace PedidosBackend.Models;
-[DynamoDBTable("Delivery")]
 public class Delivery : BaseEntity
 {
     public decimal Subtotal { get; set; }

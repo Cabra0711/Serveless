@@ -11,9 +11,9 @@ public class Product : BaseEntity
     public String Name { get; set; } = string.Empty;
     public decimal Price { get; set; }
     public string Sku  { get; set; } = string.Empty;
-    public int Quantity { get; set; }
+    public int Stock { get; set; }
     public ProductCategory Category { get; set; }
-    public bool LowStock { get; set; } = true;
+    public bool LowStock => Stock <= 5;
     public Guid DeliveryId { get; set; }
     public Delivery? Deliveries { get; set; }
 }

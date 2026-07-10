@@ -28,9 +28,9 @@ public class ValuesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<Product>> GetById(Guid id)
     {
-        var product =  _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+        var product =  await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
 
-        if (product != null)
+        if (product == null)
         {
             return NotFound();
         }
@@ -42,7 +42,7 @@ public class ValuesController : ControllerBase
 
     // POST api/values
     [HttpPost]
-    public async Task<ActionResult<Product>> post([FromBody] Product product)
+    public async Task<ActionResult<Product>> Post([FromBody] Product product)
     {
         var products = await _context.Products.FirstOrDefaultAsync(p => p.Sku == product.Sku);
 
@@ -57,14 +57,8 @@ public class ValuesController : ControllerBase
         }
         else
         {
-            product.LowStock = product.Quantity switch
-            {
-                <= 0 => false,
-                <= 10 => true,
-                _ => true
-            };
-            _context.Products.AddAsync(product);
-            _context.SaveChangesAsync();
+            await _context.Products.AddAsync(product);
+            await _context.SaveChangesAsync();
             return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
         }
     }
@@ -78,7 +72,7 @@ public class ValuesController : ControllerBase
             return BadRequest(ModelState);
         }
         _context.Products.Entry(product).State = EntityState.Modified;
-        _context.SaveChangesAsync();
+        await _context.SaveChangesAsync();
         return Ok(product);
     }
 
@@ -90,7 +84,7 @@ public class ValuesController : ControllerBase
         if (product != null)
         {
             _context.Products.Remove(product);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return Ok(product);
         }
         else
