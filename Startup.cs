@@ -1,4 +1,8 @@
-﻿namespace PedidosBackend;
+﻿using Amazon.DynamoDBv2;
+using Microsoft.EntityFrameworkCore;
+using PedidosBackend.Data;
+
+namespace PedidosBackend;
 
 public class Startup
 {
@@ -12,6 +16,9 @@ public class Startup
     // This method gets called by the runtime. Use this method to add services to the container
     public void ConfigureServices(IServiceCollection services)
     {
+        
+        var connectionString = Configuration.GetConnectionString("pgConnectionString");
+        services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
         services.AddControllers();
     }
 
