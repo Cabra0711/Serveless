@@ -9,11 +9,9 @@ namespace PedidosBackend.Models;
 public class Product : BaseEntity
 {
     public String Name { get; set; } = string.Empty;
-    public decimal Price { get; set; }
+    public decimal Price  { get; set; }
     public string Sku  { get; set; } = string.Empty;
     public int Stock { get; set; }
     public ProductCategory Category { get; set; }
     public bool LowStock => Stock <= 5;
-    public Guid DeliveryId { get; set; }
-    public Delivery? Deliveries { get; set; }
 }

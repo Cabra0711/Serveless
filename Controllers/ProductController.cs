@@ -1,5 +1,4 @@
-﻿using Amazon.DynamoDBv2.DocumentModel;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PedidosBackend.Data;
 using PedidosBackend.Models;
@@ -7,11 +6,11 @@ using PedidosBackend.Models;
 namespace PedidosBackend.Controllers;
 
 [Route("api/[controller]")]
-public class ValuesController : ControllerBase
+public class ProductController : ControllerBase
 {
     private readonly ApplicationDbContext _context;
 
-    public ValuesController(ApplicationDbContext context)
+    public ProductController(ApplicationDbContext context)
     {
         _context = context;
     }
